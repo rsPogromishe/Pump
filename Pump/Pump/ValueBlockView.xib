@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ValueBlockView" customModule="Pump" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="IJS-7a-qdG" id="qN3-aJ-4I2"/>
+                <outlet property="informationLabel" destination="Pa1-XO-5Da" id="teR-sU-4td"/>
+                <outlet property="progressLabel" destination="QbF-Ku-gCG" id="8m5-BW-3JZ"/>
+                <outlet property="progressView" destination="e7n-Jc-gpC" id="zUU-p0-2QX"/>
+                <outlet property="titleLabel" destination="vwt-Po-fN0" id="GIR-r5-hF5"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="IJS-7a-qdG">
+            <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Usage Hours" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vwt-Po-fN0">
+                    <rect key="frame" x="10" y="15" width="160" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5:50" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pa1-XO-5Da">
+                    <rect key="frame" x="54.5" y="54" width="71.5" height="42"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="e7n-Jc-gpC">
+                    <rect key="frame" x="40" y="126" width="100" height="4"/>
+                    <color key="progressTintColor" red="1" green="0.90196078431372551" blue="0.38039215686274508" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                    <color key="trackTintColor" red="1" green="1" blue="1" alpha="0.19570053809999999" colorSpace="calibratedRGB"/>
+                </progressView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/70" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QbF-Ku-gCG">
+                    <rect key="frame" x="76.5" y="136" width="27.5" height="16"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="eEE-rU-LPZ"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="e7n-Jc-gpC" firstAttribute="top" secondItem="Pa1-XO-5Da" secondAttribute="bottom" constant="30" id="1it-P8-lbM"/>
+                <constraint firstItem="vwt-Po-fN0" firstAttribute="leading" secondItem="IJS-7a-qdG" secondAttribute="leading" constant="10" id="3OQ-GO-DVA"/>
+                <constraint firstItem="eEE-rU-LPZ" firstAttribute="trailing" secondItem="e7n-Jc-gpC" secondAttribute="trailing" constant="40" id="KbD-us-tcr"/>
+                <constraint firstItem="Pa1-XO-5Da" firstAttribute="top" secondItem="vwt-Po-fN0" secondAttribute="bottom" constant="21" id="P0i-3R-eZK"/>
+                <constraint firstItem="QbF-Ku-gCG" firstAttribute="centerX" secondItem="e7n-Jc-gpC" secondAttribute="centerX" id="VV4-T1-Th3"/>
+                <constraint firstItem="vwt-Po-fN0" firstAttribute="top" secondItem="IJS-7a-qdG" secondAttribute="top" constant="15" id="d5M-yf-OjH"/>
+                <constraint firstAttribute="trailing" secondItem="vwt-Po-fN0" secondAttribute="trailing" constant="10" id="d7f-FL-nqW"/>
+                <constraint firstItem="Pa1-XO-5Da" firstAttribute="centerX" secondItem="IJS-7a-qdG" secondAttribute="centerX" id="pqx-7r-lWj"/>
+                <constraint firstItem="e7n-Jc-gpC" firstAttribute="leading" secondItem="eEE-rU-LPZ" secondAttribute="leading" constant="40" id="rm4-ot-iTF"/>
+                <constraint firstItem="QbF-Ku-gCG" firstAttribute="top" secondItem="e7n-Jc-gpC" secondAttribute="bottom" constant="6" id="x0f-Md-FAl"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="130" y="-7"/>
+        </view>
+    </objects>
+</document>
