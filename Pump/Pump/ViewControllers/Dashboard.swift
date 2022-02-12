@@ -7,16 +7,15 @@
 
 import UIKit
 
-//#warning("Почему называется MainViewController, когда это Dashboard? Приучивай себя правильно называть класса сразу")
+#warning("Та же пробелма UIScrollView , как в дашбоарде")
+#warning("Не забывай приписывать что значит класс, например Dashboard говорит о том, что это Дашбоард, ViewController, говорит что это экран - Экран дашбоарда")
 class Dashboard: UIViewController {
-    //#warning("Размер мелких графиков теряет пропорциональность по сравнению с тем, что выставлено в дизайне, из-за чего они с более узким экраном становились бы всё вытянутее по вертикали, не ок")
-    //#warning("Скруглений у большого графика нет")
+    #warning("(НЕ ИСПРАВЛЕНО)Размер мелких графиков теряет пропорциональность по сравнению с тем, что выставлено в дизайне, из-за чего они с более узким экраном становились бы всё вытянутее по вертикали, не ок")
+    #warning("Вьюхи в UIStackView без размеров")
 
     lazy var dayToday = Date()
-    //#warning("Инициализируешь здесь модель, а потом используешь её методы, которые возвращают совершенно другие значения. Можно же переиницилиазировать модель и вставлять значения")
+    #warning("(НЕ ИСПРАВИЛ) Инициализируешь здесь модель, а потом используешь её методы, которые возвращают совершенно другие значения. Можно же переиницилиазировать модель и вставлять значения")
     var model = Model()
-    
-    //#warning("Вот о чём я и говорил в Профиле, появилась куча аутлетов в контроллере, хотя 4 вью с прогресс баром очень похожи друг на друга, можно было бы создать один класс UIView для них и сократить кол-во кода минимум вдвое")
     
     @IBOutlet weak var indexAHILabel: UILabel!
     
@@ -25,25 +24,23 @@ class Dashboard: UIViewController {
     @IBOutlet weak var maskOnOffView: ValueBlockView!
     @IBOutlet weak var maskSealView: ValueBlockView!
     
-    //#warning("Та же тема с переиспользование, каждый UIProgressView в сторибоарде нужно было настраивать, хотя и есть Ctrl+C/Ctrl+V, но ты мог создать один UIView, где один раз настроил и больше трогать не надо")
+    #warning("Сделай большой график тоже отдельным кастомным вью")
     
     @IBOutlet weak var currentIndex: UIImageView!
     @IBOutlet weak var currentIndexConst: NSLayoutConstraint!
     @IBOutlet weak var indexAHIprogress: UIView!
     @IBOutlet weak var rightAHIProgress: UIView!
     
-    //#warning("Нижний отступ в 148 не совсем понял для чего нужен")
     @IBOutlet weak var scrollView: UIScrollView!
     
     @IBOutlet weak var refreshButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //#warning("Если бы табов стало 5, то пришлось бы прописывать код с таббаром в каждом контроллере, когда можно создать свой, наследуясь от UITabbarController и прописать все настройки в его методе viewDidLoad")
+        #warning("Если бы табов стало 5, то пришлось бы прописывать код с таббаром в каждом контроллере, когда можно создать свой, наследуясь от UITabbarController и прописать все настройки в его методе viewDidLoad. TODO: Имелось в виду сделать child класс UIViewController, в котором бы происходила вся настройка")
         self.navigationItem.title = DateFormat.dateToday(day: dayToday, formatter: "EEEE, MMMM dd")
         self.navigationController?.navigationItem.titleView?.tintColor = .white
-        //#warning("lazy здесь не нужен, тк переменная в доли секунды начинает использоваться")
-        //#warning("UIRefreshControl лучше настраивать в отдельном методе и здесь этот метод использовать, лучше работать не станет, но читабельность улучшится")
+        
         setUpTabBar()
         setUpResfreshControl()
         setUpCorners()
@@ -70,7 +67,6 @@ class Dashboard: UIViewController {
     func setUpResfreshControl() {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
-        //#warning("Определяешь переменную со строкой, потом её передаёшь в новую переменную, для чего?")
         let refreshString = "Refreshing..."
         let mutableAttributedString = NSMutableAttributedString.init(string: refreshString)
         let range = (refreshString as NSString).range(of: refreshString)
@@ -81,6 +77,7 @@ class Dashboard: UIViewController {
     }
     
     func indexAHI() {
+        #warning("Та же проблема с моделью, как и в Профиле")
         let random = model.randomIndexAHI()
         indexAHILabel.text = random
         let randomInt = Double(random) ?? 0
@@ -108,6 +105,8 @@ class Dashboard: UIViewController {
     
     @objc func refresh(refreshControl: UIRefreshControl) {
         self.refreshButton.isEnabled = false
+        #warning("На самом деле action методы кнопок вызываются и так в Main очереди, сейчас это не сильно замедлит работу, но в дальнейшем могут появиться последствия")
+        
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(1)) {
             self.indexAHI()
             self.usageHoursView.selectTypeOfView(withType: .usageHours)
@@ -117,12 +116,11 @@ class Dashboard: UIViewController {
             refreshControl.endRefreshing()
             self.refreshButton.isEnabled = true
         }
-        //#warning("endRefreshing тоже UI метод, так почему он вне Main очереди")
         
     }
     
     @IBAction func refreshButtonPressed(_ sender: UIBarButtonItem) {
-        //#warning("При вызове одного из двух одинаковых методов нужно выключать другой, иначе если запрос будет выполняться слишком долго, то есть вероятность, что пользователь нажмёт на другую кнопку и запрос будет уже выполняться дважды")
+        #warning("На самом деле action методы кнопок вызываются и так в Main очереди, сейчас это не сильно замедлит работу, но в дальнейшем могут появиться последствия")
         self.scrollView.refreshControl?.isEnabled = false
         DispatchQueue.main.async {
             self.indexAHI()

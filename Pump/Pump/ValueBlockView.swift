@@ -48,6 +48,8 @@ class ValueBlockView: UIView {
         contentView.updateConstraintsIfNeeded()
     }
     
+    #warning("Пытайся делать так, чтобы модель не хранилась в UIView(смотри работу MVC), передавай её в метод и в методе уже конфигурируй UIView как тебе нужно")
+    
     func selectTypeOfView(withType type: TypeOfView) {
         switch type {
         case .usageHours:
