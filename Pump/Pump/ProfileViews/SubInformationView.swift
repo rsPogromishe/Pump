@@ -7,9 +7,7 @@
 
 import UIKit
 
-class SubInformationView: UIView {
-    
-    let userData = UserData.shared
+class SubInformationView: UIView, SubInformationDelegate {
     
     @IBOutlet var contentView: UIView!
     
@@ -23,23 +21,19 @@ class SubInformationView: UIView {
     @IBOutlet weak var versionNumberLabel: UILabel!
     @IBOutlet weak var activationDateLabel: UILabel!
 
-    #warning("Вертикальный UIStackView здесь лучше подойдёт, тк тебе может потребоваться добавить ещё одно Поле - Значение, сейчас это будет проблематично")
+    //#warning("Вертикальный UIStackView здесь лучше подойдёт, тк тебе может потребоваться добавить ещё одно Поле - Значение, сейчас это будет проблематично")
     
-    #warning("Сепаратор между Полем и Значением как в дизайне так и не сделал")
+    //#warning("Сепаратор между Полем и Значением как в дизайне так и не сделал")
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
     }
         
-    #warning("А если данные о пользователе придут после того, как метод init вызовется, то как обновлять эту вью. Описывай метод отдельный метод configure и вызывай его во viewDidLoad, в этом случае ты сможешь обновлять данные по мере прихода информации")
+    //#warning("А если данные о пользователе придут после того, как метод init вызовется, то как обновлять эту вью. Описывай метод отдельный метод configure и вызывай его во viewDidLoad, в этом случае ты сможешь обновлять данные по мере прихода информации")
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         commonInit()
-        modelNumberLabel.text = userData.numberOfModel
-        serialNumberLabel.text = userData.serialNumber
-        versionNumberLabel.text = userData.versionNumber
-        activationDateLabel.text = userData.activationDateOfModel
     }
         
     private func commonInit() {
@@ -54,9 +48,24 @@ class SubInformationView: UIView {
         contentView.updateConstraintsIfNeeded()
     }
     
-    #warning("Вью должна прокидывать action во вью контроллер. Опиши Delegate, с помощью которого контроллер подпишется на ивент о disconnect")
-    @IBAction func disconnectButtonTapped(_ sender: Any) {
-    
+    func configure(data: UserData.Device) {
+        
+        modelNumberLabel.text = data.numberOfModel
+        serialNumberLabel.text = data.serialNumber
+        versionNumberLabel.text = data.versionNumber
+        activationDateLabel.text = data.activationDateOfModel
     }
     
+    //#warning("Вью должна прокидывать action во вью контроллер. Опиши Delegate, с помощью которого контроллер подпишется на ивент о disconnect")
+    @IBAction func disconnectButtonTapped(_ sender: Any) {
+        disconnect()
+    }
+    
+    func disconnect() {
+        print("disconnect")
+    }
+}
+
+protocol SubInformationDelegate: AnyObject {
+    func disconnect()
 }

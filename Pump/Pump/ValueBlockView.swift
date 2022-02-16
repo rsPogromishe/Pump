@@ -16,8 +16,6 @@ enum TypeOfView {
 
 class ValueBlockView: UIView {
     
-    var model = Model()
-    
     @IBOutlet var contentView: UIView!
     
     @IBOutlet weak var titleLabel: UILabel!
@@ -48,53 +46,48 @@ class ValueBlockView: UIView {
         contentView.updateConstraintsIfNeeded()
     }
     
-    #warning("Пытайся делать так, чтобы модель не хранилась в UIView(смотри работу MVC), передавай её в метод и в методе уже конфигурируй UIView как тебе нужно")
+    //#warning("Пытайся делать так, чтобы модель не хранилась в UIView(смотри работу MVC), передавай её в метод и в методе уже конфигурируй UIView как тебе нужно")
     
-    func selectTypeOfView(withType type: TypeOfView) {
+    func selectTypeOfView(withType type: TypeOfView, model: Model) {
         switch type {
         case .usageHours:
-            usageHours()
+            usageHours(model: model)
         case .eventsPerHours:
-            eventsPerHours()
+            eventsPerHours(model: model)
         case .maskOnOff:
-            maskOnOff()
+            maskOnOff(model: model)
         case .maskSeal:
-            maskSeal()
+            maskSeal(model: model)
         }
     }
     
-    func usageHours() {
-        let random = model.randomUsageHours()
-        let randomMinutes = model.randomUsageMinutes()
+    func usageHours(model: Model) {
         titleLabel.text = "Usage Hours"
-        informationLabel.text = "\(random):\(randomMinutes)"
-        progressView.progress = (Float(random) ?? 0) / 10
-        progressLabel.text = "\(random)/10"
+        informationLabel.text = "\(model.usageHours):\(model.usageMinutes)"
+        progressView.progress = (Float(model.usageHours) ?? 0) / 10
+        progressLabel.text = "\(model.usageHours)/10"
     }
     
-    func eventsPerHours() {
-        let random = model.randomEventsPerHours()
+    func eventsPerHours(model: Model) {
         titleLabel.text = "Events Per Hours"
-        informationLabel.text = random
-        progressView.progress = (Float(random) ?? 0) / 5
-        if let randomNumber = NumberFormatter().number(from: random) {
+        informationLabel.text = model.eventsPerHour
+        progressView.progress = (Float(model.eventsPerHour) ?? 0) / 5
+        if let randomNumber = NumberFormatter().number(from: model.eventsPerHour) {
             let randomInt = randomNumber.intValue
             progressLabel.text = "\(randomInt)/5"
         }
     }
     
-    func maskOnOff() {
-        let random = model.randomMaskOnOff()
+    func maskOnOff(model: Model) {
         titleLabel.text = "Mask On/Off"
-        informationLabel.text = random
-        progressView.progress = (Float(random) ?? 0) / 5
-        progressLabel.text = "\(random)/5"
+        informationLabel.text = model.maskOnOff
+        progressView.progress = (Float(model.maskOnOff) ?? 0) / 5
+        progressLabel.text = "\(model.maskOnOff)/5"
     }
     
-    func maskSeal() {
-        let random = model.randomMaskSeal()
+    func maskSeal(model: Model) {
         titleLabel.text = "Mask Seal"
-        if let randomNumber = NumberFormatter().number(from: random) {
+        if let randomNumber = NumberFormatter().number(from: model.maskSeal) {
             let randomInt = randomNumber.intValue
             switch randomInt {
             case 0...5:

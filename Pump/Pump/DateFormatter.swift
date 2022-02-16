@@ -8,21 +8,24 @@
 import Foundation
 
 class DateFormat {
-    static func dateToday(day: Date, formatter: String) -> String {
+    
+    static func dateToday(formatter: String) -> String {
         let format = DateFormatter()
         format.dateFormat = formatter
-        return format.string(from: day)
+        format.locale = Locale(identifier: "en_EN")
+        return format.string(from: Date()).capitalized
     }
     
-    static func yesterday(date: Date) -> String? {
-        let yesterday = Calendar.current.date(byAdding: .day, value: -7, to: date)
+    static func yesterday() -> String {
+        let yesterday = Calendar.current.date(byAdding: .day, value: -7, to: Date())
         guard let yesterday = yesterday else {
-            return nil
+            return ""
         }
      
         let format = DateFormatter()
         format.dateFormat = "MMMM dd, yyyy"
-        return format.string(from: yesterday)
+        format.locale = Locale(identifier: "en_EN")
+        return format.string(from: yesterday).capitalized
     }
     
 }
