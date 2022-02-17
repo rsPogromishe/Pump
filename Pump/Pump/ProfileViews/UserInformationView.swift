@@ -17,16 +17,13 @@ class UserInformationView: UIView, UserInformationDelegate {
     @IBOutlet weak var nameOfUserLabel: UILabel!
     @IBOutlet weak var dateOfRegistrationLabel: UILabel!
     
-    //#warning("Вертикальный UIStackView здесь лучше подойдёт, тк тебе может потребоваться добавить ещё одно Поле - Значение, сейчас это будет проблематично")
-    
-    //#warning("Сепаратор между Полем и Значением как в дизайне так и не сделал")
+    #warning("UIStackView вертикальный и так предполагает, что вьюхи друг за другом, констреинты то для чего, выставляй в савьюхах конкретное значение высоты")
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
     }
-        
-    //#warning("А если данные о пользователе придут после того, как метод init вызовется, то как обновлять эту вью. Описывай метод отдельный метод configure и вызывай его во viewDidLoad, в этом случае ты сможешь обновлять данные по мере прихода информации")
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         commonInit()
@@ -51,7 +48,7 @@ class UserInformationView: UIView, UserInformationDelegate {
         dateOfRegistrationLabel.text = data.userDateRegistration
     }
     
-    //#warning("Вью должна прокидывать action во вью контроллер. Опиши Delegate, с помощью которого контроллер подпишется на ивент о logout")
+    #warning("(НЕ ИСПРАВЛЕНО)Вью должна прокидывать action во вью контроллер. Опиши Delegate, с помощью которого контроллер подпишется на ивент о logout/TODO: в итоге логаут всё так же во вьюхе остался и нтгде не вызывается")
     @IBAction func logoutButtonTapped(_ sender: Any) {
         logout()
     }

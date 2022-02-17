@@ -18,4 +18,5 @@ class Model {
     var maskOnOff = random.randomMaskOnOff()
     var maskSeal = random.randomMaskSeal()
     
+    #warning("Опиши init метод класса и там проинициализируй все свойства")
 }

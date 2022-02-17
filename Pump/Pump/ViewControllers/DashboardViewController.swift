@@ -7,13 +7,9 @@
 
 import UIKit
 
-//#warning("Та же пробелма UIScrollView , как в дашбоарде")
-//#warning("Не забывай приписывать что значит класс, например Dashboard говорит о том, что это Дашбоард, ViewController, говорит что это экран - Экран дашбоарда")
 class DashboardViewController: BaseViewController {
     //#warning("(НЕ ИСПРАВЛЕНО)Размер мелких графиков теряет пропорциональность по сравнению с тем, что выставлено в дизайне, из-за чего они с более узким экраном становились бы всё вытянутее по вертикали, не ок")
     //#warning("Вьюхи в UIStackView без размеров")
-    
-    //#warning("(НЕ ИСПРАВИЛ) Инициализируешь здесь модель, а потом используешь её методы, которые возвращают совершенно другие значения. Можно же переиницилиазировать модель и вставлять значения")
     
     @IBOutlet weak var indexAHIView: IndexAHIView!
     
@@ -21,8 +17,6 @@ class DashboardViewController: BaseViewController {
     @IBOutlet weak var eventsPerHoursView: ValueBlockView!
     @IBOutlet weak var maskOnOffView: ValueBlockView!
     @IBOutlet weak var maskSealView: ValueBlockView!
-    
-    //#warning("Сделай большой график тоже отдельным кастомным вью")
    
     @IBOutlet weak var scrollView: UIScrollView!
     
@@ -30,12 +24,12 @@ class DashboardViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //#warning("Если бы табов стало 5, то пришлось бы прописывать код с таббаром в каждом контроллере, когда можно создать свой, наследуясь от UITabbarController и прописать все настройки в его методе viewDidLoad. TODO: Имелось в виду сделать child класс UIViewController, в котором бы происходила вся настройка")
         self.navigationItem.title = DateFormat.dateToday(formatter: "EEEE, MMMM dd")
         self.navigationController?.navigationItem.titleView?.tintColor = .white
         
         setUpResfreshControl()
         
+        #warning("Модель же одна для всех вьюх")
         usageHoursView.selectTypeOfView(withType: .usageHours, model: Model())
         eventsPerHoursView.selectTypeOfView(withType: .eventsPerHours, model: Model())
         maskOnOffView.selectTypeOfView(withType: .maskOnOff, model: Model())
@@ -44,6 +38,7 @@ class DashboardViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        #warning("Почему не во viewDidLoad")
         indexAHIView.configure(model: Model())
     }
     
@@ -61,7 +56,6 @@ class DashboardViewController: BaseViewController {
     
     @objc func refresh(refreshControl: UIRefreshControl) {
         self.refreshButton.isEnabled = false
-        //#warning("На самом деле action методы кнопок вызываются и так в Main очереди, сейчас это не сильно замедлит работу, но в дальнейшем могут появиться последствия")
         
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(1)) {
             self.indexAHIView.configure(model: Model())
@@ -76,8 +70,8 @@ class DashboardViewController: BaseViewController {
     }
     
     @IBAction func refreshButtonPressed(_ sender: UIBarButtonItem) {
-        //#warning("На самом деле action методы кнопок вызываются и так в Main очереди, сейчас это не сильно замедлит работу, но в дальнейшем могут появиться последствия")
         self.scrollView.refreshControl?.isEnabled = false
+        #warning("Обновляй одну модель и передавай её во вьюхи")
         self.indexAHIView.configure(model: Model())
         self.usageHoursView.selectTypeOfView(withType: .usageHours, model: Model())
         self.eventsPerHoursView.selectTypeOfView(withType: .eventsPerHours, model: Model())
