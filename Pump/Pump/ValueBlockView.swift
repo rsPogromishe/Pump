@@ -43,8 +43,7 @@ class ValueBlockView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         contentView.frame = bounds
-        #warning("Не нужно это здесь")
-        contentView.updateConstraintsIfNeeded()
+        //#warning("Не нужно это здесь")
     }
     
     func selectTypeOfView(withType type: TypeOfView, model: Model) {
@@ -52,15 +51,15 @@ class ValueBlockView: UIView {
         case .usageHours:
             usageHours(model: model)
         case .eventsPerHours:
-            eventsPerHours(model: model)
+            eventsPerHours(model: model.eventsPerHour)
         case .maskOnOff:
-            maskOnOff(model: model)
+            maskOnOff(model: model.maskOnOff)
         case .maskSeal:
-            maskSeal(model: model)
+            maskSeal(model: model.maskSeal)
         }
     }
     
-    #warning("Сюда уже можно передавать только необходимые данные")
+    //#warning("Сюда уже можно передавать только необходимые данные")
     func usageHours(model: Model) {
         titleLabel.text = "Usage Hours"
         informationLabel.text = "\(model.usageHours):\(model.usageMinutes)"
@@ -68,26 +67,26 @@ class ValueBlockView: UIView {
         progressLabel.text = "\(model.usageHours)/10"
     }
     
-    func eventsPerHours(model: Model) {
+    func eventsPerHours(model: String) {
         titleLabel.text = "Events Per Hours"
-        informationLabel.text = model.eventsPerHour
-        progressView.progress = (Float(model.eventsPerHour) ?? 0) / 5
-        if let randomNumber = NumberFormatter().number(from: model.eventsPerHour) {
+        informationLabel.text = model
+        progressView.progress = (Float(model) ?? 0) / 5
+        if let randomNumber = NumberFormatter().number(from: model) {
             let randomInt = randomNumber.intValue
             progressLabel.text = "\(randomInt)/5"
         }
     }
     
-    func maskOnOff(model: Model) {
+    func maskOnOff(model: String) {
         titleLabel.text = "Mask On/Off"
-        informationLabel.text = model.maskOnOff
-        progressView.progress = (Float(model.maskOnOff) ?? 0) / 5
-        progressLabel.text = "\(model.maskOnOff)/5"
+        informationLabel.text = model
+        progressView.progress = (Float(model) ?? 0) / 5
+        progressLabel.text = "\(model)/5"
     }
     
-    func maskSeal(model: Model) {
+    func maskSeal(model: String) {
         titleLabel.text = "Mask Seal"
-        if let randomNumber = NumberFormatter().number(from: model.maskSeal) {
+        if let randomNumber = NumberFormatter().number(from: model) {
             let randomInt = randomNumber.intValue
             switch randomInt {
             case 0...5:

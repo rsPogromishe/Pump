@@ -7,7 +7,9 @@
 
 import UIKit
 
-class UserInformationView: UIView, UserInformationDelegate {
+class UserInformationView: UIView {
+    
+    var delegate: UserInformationDelegate?
 
     @IBOutlet weak var contentView: UIView!
     
@@ -17,7 +19,7 @@ class UserInformationView: UIView, UserInformationDelegate {
     @IBOutlet weak var nameOfUserLabel: UILabel!
     @IBOutlet weak var dateOfRegistrationLabel: UILabel!
     
-    #warning("UIStackView вертикальный и так предполагает, что вьюхи друг за другом, констреинты то для чего, выставляй в савьюхах конкретное значение высоты")
+    //#warning("UIStackView вертикальный и так предполагает, что вьюхи друг за другом, констреинты то для чего, выставляй в савьюхах конкретное значение высоты")
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -41,22 +43,20 @@ class UserInformationView: UIView, UserInformationDelegate {
         contentView.updateConstraintsIfNeeded()
     }
     
-    func configure(data: UserData.User) {
-        nameLabel.text = data.user
-        nameOfUserLabel.text = data.userName
-        registrationLabel.text = data.registration
-        dateOfRegistrationLabel.text = data.userDateRegistration
+    func configure(data: UserData) {
+        nameLabel.text = data.userInfo.user
+        nameOfUserLabel.text = data.userInfo.userName
+        registrationLabel.text = data.userInfo.registration
+        dateOfRegistrationLabel.text = data.userInfo.userDateRegistration
     }
     
-    #warning("(НЕ ИСПРАВЛЕНО)Вью должна прокидывать action во вью контроллер. Опиши Delegate, с помощью которого контроллер подпишется на ивент о logout/TODO: в итоге логаут всё так же во вьюхе остался и нтгде не вызывается")
+    //#warning("(НЕ ИСПРАВЛЕНО)Вью должна прокидывать action во вью контроллер. Опиши Delegate, с помощью которого контроллер подпишется на ивент о logout/TODO: в итоге логаут всё так же во вьюхе остался и нтгде не вызывается")
     @IBAction func logoutButtonTapped(_ sender: Any) {
-        logout()
+        delegate?.logout(sender: sender)
     }
     
-    func logout() {
-        print("logout")
-    }
 }
+
 protocol UserInformationDelegate {
-    func logout()
+    func logout(sender: Any)
 }

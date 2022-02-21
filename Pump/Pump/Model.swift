@@ -11,12 +11,20 @@ var random = Random()
 
 class Model {
     
-    var indexAHI = random.randomIndexAHI()
-    var usageHours = random.randomUsageHours()
-    var usageMinutes = random.randomUsageMinutes()
-    var eventsPerHour = random.randomEventsPerHours()
-    var maskOnOff = random.randomMaskOnOff()
-    var maskSeal = random.randomMaskSeal()
+    var indexAHI: String
+    var usageHours: String
+    var usageMinutes: String
+    var eventsPerHour: String
+    var maskOnOff: String
+    var maskSeal: String
     
-    #warning("Опиши init метод класса и там проинициализируй все свойства")
+    //#warning("Опиши init метод класса и там проинициализируй все свойства")
+    init() {
+        indexAHI = random.randomIndexAHI()
+        usageHours = random.randomUsageHours()
+        usageMinutes = random.randomUsageMinutes()
+        eventsPerHour = random.randomEventsPerHours()
+        maskOnOff = random.randomMaskOnOff()
+        maskSeal = random.randomMaskSeal()
+    }
 }

@@ -7,12 +7,10 @@
 
 import UIKit
 
-class ProfileViewController: BaseViewController {
-    var delegateUser: UserInformationDelegate?
-    var delegateDevice: SubInformationDelegate?
+class ProfileViewController: BaseViewController, UserInformationDelegate, SubInformationDelegate {
     
-    let dataUser = UserData.User()
-    let dataDevice = UserData.Device()
+    let dataUser = UserData()
+    let dataDevice = UserData()
     
     @IBOutlet weak var userInformationView: UserInformationView!
     @IBOutlet weak var subInformationView: SubInformationView!
@@ -21,8 +19,15 @@ class ProfileViewController: BaseViewController {
         super.viewDidLoad()
         userInformationView.configure(data: dataUser)
         subInformationView.configure(data: dataDevice)
-        delegateUser?.logout()
-        delegateDevice?.disconnect()
+        userInformationView.delegate = self
+        subInformationView.delegate = self
     }
- 
+    
+    func logout(sender: Any) {
+        print("logout")
+    }
+    
+    func disconnect(sender: Any) {
+        print("disconnect")
+    }
 }

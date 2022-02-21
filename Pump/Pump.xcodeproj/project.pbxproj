@@ -16,15 +16,15 @@
 		58133C7827AF158200608A70 /* ValueBlockView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58133C7727AF158200608A70 /* ValueBlockView.xib */; };
 		5892EB3C2785D257005DCDE4 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5892EB3B2785D257005DCDE4 /* Model.swift */; };
 		5892EB3E278648FD005DCDE4 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5892EB3D278648FD005DCDE4 /* ProfileViewController.swift */; };
+		589ACCC727BEC999006FD5C4 /* GenerateRandom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589ACCC627BEC999006FD5C4 /* GenerateRandom.swift */; };
 		589F8F79277D1714000DC0A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589F8F78277D1714000DC0A6 /* AppDelegate.swift */; };
 		589F8F7B277D1714000DC0A6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589F8F7A277D1714000DC0A6 /* SceneDelegate.swift */; };
 		589F8F80277D1714000DC0A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 589F8F7E277D1714000DC0A6 /* Main.storyboard */; };
 		589F8F82277D1716000DC0A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 589F8F81277D1716000DC0A6 /* Assets.xcassets */; };
 		589F8F85277D1716000DC0A6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 589F8F83277D1716000DC0A6 /* LaunchScreen.storyboard */; };
 		589F8F8F277D1E8B000DC0A6 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589F8F8E277D1E8B000DC0A6 /* DashboardViewController.swift */; };
-		589F8F91277D2301000DC0A6 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589F8F90277D2301000DC0A6 /* DateFormatter.swift */; };
+		589F8F91277D2301000DC0A6 /* DateFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589F8F90277D2301000DC0A6 /* DateFormat.swift */; };
 		58E10D1C27BC143B007ACE98 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E10D1B27BC143B007ACE98 /* BaseViewController.swift */; };
-		58E10D1E27BC42DF007ACE98 /* GenerateRandom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E10D1D27BC42DF007ACE98 /* GenerateRandom.swift */; };
 		58E10D2027BC4AF9007ACE98 /* IndexAHIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E10D1F27BC4AF9007ACE98 /* IndexAHIView.swift */; };
 		58E10D2227BC4B03007ACE98 /* IndexAHIView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58E10D2127BC4B03007ACE98 /* IndexAHIView.xib */; };
 /* End PBXBuildFile section */
@@ -39,6 +39,7 @@
 		58133C7727AF158200608A70 /* ValueBlockView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ValueBlockView.xib; sourceTree = "<group>"; };
 		5892EB3B2785D257005DCDE4 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		5892EB3D278648FD005DCDE4 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		589ACCC627BEC999006FD5C4 /* GenerateRandom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateRandom.swift; sourceTree = "<group>"; };
 		589F8F75277D1714000DC0A6 /* Pump.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pump.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		589F8F78277D1714000DC0A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		589F8F7A277D1714000DC0A6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -47,9 +48,8 @@
 		589F8F84277D1716000DC0A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		589F8F86277D1716000DC0A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		589F8F8E277D1E8B000DC0A6 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
-		589F8F90277D2301000DC0A6 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
+		589F8F90277D2301000DC0A6 /* DateFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormat.swift; sourceTree = "<group>"; };
 		58E10D1B27BC143B007ACE98 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		58E10D1D27BC42DF007ACE98 /* GenerateRandom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateRandom.swift; sourceTree = "<group>"; };
 		58E10D1F27BC4AF9007ACE98 /* IndexAHIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexAHIView.swift; sourceTree = "<group>"; };
 		58E10D2127BC4B03007ACE98 /* IndexAHIView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IndexAHIView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -68,10 +68,10 @@
 		58100C7E27A95795003D80A5 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				589F8F90277D2301000DC0A6 /* DateFormatter.swift */,
+				589F8F90277D2301000DC0A6 /* DateFormat.swift */,
 				5892EB3B2785D257005DCDE4 /* Model.swift */,
 				58133C7127AF0FCF00608A70 /* UserData.swift */,
-				58E10D1D27BC42DF007ACE98 /* GenerateRandom.swift */,
+				589ACCC627BEC999006FD5C4 /* GenerateRandom.swift */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -229,9 +229,9 @@
 				58E10D1C27BC143B007ACE98 /* BaseViewController.swift in Sources */,
 				5892EB3C2785D257005DCDE4 /* Model.swift in Sources */,
 				58133C7227AF0FD000608A70 /* UserData.swift in Sources */,
-				589F8F91277D2301000DC0A6 /* DateFormatter.swift in Sources */,
+				589F8F91277D2301000DC0A6 /* DateFormat.swift in Sources */,
+				589ACCC727BEC999006FD5C4 /* GenerateRandom.swift in Sources */,
 				589F8F8F277D1E8B000DC0A6 /* DashboardViewController.swift in Sources */,
-				58E10D1E27BC42DF007ACE98 /* GenerateRandom.swift in Sources */,
 				589F8F79277D1714000DC0A6 /* AppDelegate.swift in Sources */,
 				58133C6E27AEC8E000608A70 /* SubInformationView.swift in Sources */,
 				58E10D2027BC4AF9007ACE98 /* IndexAHIView.swift in Sources */,

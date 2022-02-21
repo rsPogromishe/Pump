@@ -29,17 +29,8 @@ class DashboardViewController: BaseViewController {
         
         setUpResfreshControl()
         
-        #warning("Модель же одна для всех вьюх")
-        usageHoursView.selectTypeOfView(withType: .usageHours, model: Model())
-        eventsPerHoursView.selectTypeOfView(withType: .eventsPerHours, model: Model())
-        maskOnOffView.selectTypeOfView(withType: .maskOnOff, model: Model())
-        maskSealView.selectTypeOfView(withType: .maskSeal, model: Model())
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        #warning("Почему не во viewDidLoad")
-        indexAHIView.configure(model: Model())
+        //#warning("Модель же одна для всех вьюх")
+        setUpViews()
     }
     
     func setUpResfreshControl() {
@@ -58,11 +49,7 @@ class DashboardViewController: BaseViewController {
         self.refreshButton.isEnabled = false
         
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(1)) {
-            self.indexAHIView.configure(model: Model())
-            self.usageHoursView.selectTypeOfView(withType: .usageHours, model: Model())
-            self.eventsPerHoursView.selectTypeOfView(withType: .eventsPerHours, model: Model())
-            self.maskOnOffView.selectTypeOfView(withType: .maskOnOff, model: Model())
-            self.maskSealView.selectTypeOfView(withType: .maskSeal, model: Model())
+            self.setUpViews()
             refreshControl.endRefreshing()
             self.refreshButton.isEnabled = true
         }
@@ -71,12 +58,16 @@ class DashboardViewController: BaseViewController {
     
     @IBAction func refreshButtonPressed(_ sender: UIBarButtonItem) {
         self.scrollView.refreshControl?.isEnabled = false
-        #warning("Обновляй одну модель и передавай её во вьюхи")
-        self.indexAHIView.configure(model: Model())
-        self.usageHoursView.selectTypeOfView(withType: .usageHours, model: Model())
-        self.eventsPerHoursView.selectTypeOfView(withType: .eventsPerHours, model: Model())
-        self.maskOnOffView.selectTypeOfView(withType: .maskOnOff, model: Model())
-        self.maskSealView.selectTypeOfView(withType: .maskSeal, model: Model())
+        //#warning("Обновляй одну модель и передавай её во вьюхи")
+        setUpViews()
     }
     
+    func setUpViews() {
+        let model = Model()
+        indexAHIView.configure(model: model)
+        usageHoursView.selectTypeOfView(withType: .usageHours, model: model)
+        eventsPerHoursView.selectTypeOfView(withType: .eventsPerHours, model: model)
+        maskOnOffView.selectTypeOfView(withType: .maskOnOff, model: model)
+        maskSealView.selectTypeOfView(withType: .maskSeal, model: model)
+    }
 }

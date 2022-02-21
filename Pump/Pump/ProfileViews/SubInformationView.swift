@@ -7,7 +7,9 @@
 
 import UIKit
 
-class SubInformationView: UIView, SubInformationDelegate {
+class SubInformationView: UIView {
+    
+    var delegate: SubInformationDelegate?
     
     @IBOutlet var contentView: UIView!
     
@@ -21,7 +23,7 @@ class SubInformationView: UIView, SubInformationDelegate {
     @IBOutlet weak var versionNumberLabel: UILabel!
     @IBOutlet weak var activationDateLabel: UILabel!
     
-    #warning("Сепаратор не правильный)")
+    //#warning("Сепаратор не правильный)")
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -45,24 +47,21 @@ class SubInformationView: UIView, SubInformationDelegate {
         contentView.updateConstraintsIfNeeded()
     }
     
-    func configure(data: UserData.Device) {
+    func configure(data: UserData) {
         
-        modelNumberLabel.text = data.numberOfModel
-        serialNumberLabel.text = data.serialNumber
-        versionNumberLabel.text = data.versionNumber
-        activationDateLabel.text = data.activationDateOfModel
+        modelNumberLabel.text = data.device.numberOfModel
+        serialNumberLabel.text = data.device.serialNumber
+        versionNumberLabel.text = data.device.versionNumber
+        activationDateLabel.text = data.device.activationDateOfModel
     }
     
-    #warning("Вью должна прокидывать action во вью контроллер. Опиши Delegate, с помощью которого контроллер подпишется на ивент о disconnect")
+    //#warning("Вью должна прокидывать action во вью контроллер. Опиши Delegate, с помощью которого контроллер подпишется на ивент о disconnect")
     @IBAction func disconnectButtonTapped(_ sender: Any) {
-        disconnect()
+        delegate?.disconnect(sender: sender)
     }
-    
-    func disconnect() {
-        print("disconnect")
-    }
+
 }
 
 protocol SubInformationDelegate: AnyObject {
-    func disconnect()
+    func disconnect(sender: Any)
 }

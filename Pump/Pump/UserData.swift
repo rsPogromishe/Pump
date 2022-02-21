@@ -28,23 +28,13 @@ import Foundation
  
 
 class UserData {
-    #warning("Вынеси класс за класс UserData и вставь сюда свойством и проинициализируй с помощью init метода")
-    class User {
-        let user = "Name"
-        let userName = "Voypel Proshka"
-        let registration = "Registration"
-        let userDateRegistration = DateFormat.yesterday()
-    }
+    //#warning("Вынеси класс за класс UserData и вставь сюда свойством и проинициализируй с помощью init метода")
+    var userInfo: User
+    var device: Device
     
-    class Device {
-        let model = "Loewenstein medical"
-        let numberOfModel = "v40"
-        let number = "Seriennummer"
-        let serialNumber = "32002951"
-        let version = "Firmware-Version"
-        let versionNumber = "3.5.0014"
-        let activate = "Activation Date"
-        let activationDateOfModel = DateFormat.dateToday(formatter: "MMMM dd, yyyy")
+    init() {
+        userInfo = User()
+        device = Device()
     }
     
     /*
@@ -54,4 +44,38 @@ class UserData {
          obj = Obj()
      }
      */
+}
+class User {
+    var user: String
+    var userName: String
+    var registration: String
+    var userDateRegistration: String
+    
+    init() {
+        user = "Name"
+        userName = "Voypel Proshka"
+        registration = "Registration"
+        userDateRegistration = DateFormat.yesterday()
+    }
+}
+class Device {
+    var model: String
+    var numberOfModel: String
+    var number: String
+    var serialNumber: String
+    var version: String
+    var versionNumber: String
+    var activate: String
+    var activationDateOfModel: String
+    
+    init() {
+        model = "Loewenstein medical"
+        numberOfModel = "v40"
+        number = "Seriennummer"
+        serialNumber = "32002951"
+        version = "Firmware-Version"
+        versionNumber = "3.5.0014"
+        activate = "Activation Date"
+        activationDateOfModel = DateFormat.dateToday(formatter: "MMMM dd, yyyy")
+    }
 }
