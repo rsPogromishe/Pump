@@ -7,28 +7,7 @@
 
 import Foundation
 
-/*
- class Obj: NSObject {
-     var prop: String
-     
-     override init() {
-         prop = "Prop"
-         
-         super.init()
-     }
-     
-     
-     init(prop: String) {
-         self.prop = prop
-         
-         super.init()
-     }
- }
- */
- 
-
 class UserData {
-    //#warning("Вынеси класс за класс UserData и вставь сюда свойством и проинициализируй с помощью init метода")
     var userInfo: User
     var device: Device
     
@@ -36,14 +15,6 @@ class UserData {
         userInfo = User()
         device = Device()
     }
-    
-    /*
-     var obj: Obj
-     
-     init() {
-         obj = Obj()
-     }
-     */
 }
 class User {
     var user: String

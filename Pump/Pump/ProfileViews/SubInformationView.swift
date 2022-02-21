@@ -23,8 +23,6 @@ class SubInformationView: UIView {
     @IBOutlet weak var versionNumberLabel: UILabel!
     @IBOutlet weak var activationDateLabel: UILabel!
     
-    //#warning("Сепаратор не правильный)")
-
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -55,7 +53,6 @@ class SubInformationView: UIView {
         activationDateLabel.text = data.device.activationDateOfModel
     }
     
-    //#warning("Вью должна прокидывать action во вью контроллер. Опиши Delegate, с помощью которого контроллер подпишется на ивент о disconnect")
     @IBAction func disconnectButtonTapped(_ sender: Any) {
         delegate?.disconnect(sender: sender)
     }

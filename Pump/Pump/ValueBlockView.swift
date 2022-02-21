@@ -43,7 +43,6 @@ class ValueBlockView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         contentView.frame = bounds
-        //#warning("Не нужно это здесь")
     }
     
     func selectTypeOfView(withType type: TypeOfView, model: Model) {
@@ -59,7 +58,6 @@ class ValueBlockView: UIView {
         }
     }
     
-    //#warning("Сюда уже можно передавать только необходимые данные")
     func usageHours(model: Model) {
         titleLabel.text = "Usage Hours"
         informationLabel.text = "\(model.usageHours):\(model.usageMinutes)"

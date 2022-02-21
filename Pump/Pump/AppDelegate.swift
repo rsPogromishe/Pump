@@ -10,9 +10,6 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-   // #warning("Не забывай убирать в настройках галочку с iPad, если приложение не задумывалось для него")
-   // #warning("В Assets давай реальные имена для картинок, например profile_tab_bar_item, dashboardTabBarItem")
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         return true

@@ -18,7 +18,6 @@ class Model {
     var maskOnOff: String
     var maskSeal: String
     
-    //#warning("Опиши init метод класса и там проинициализируй все свойства")
     init() {
         indexAHI = random.randomIndexAHI()
         usageHours = random.randomUsageHours()

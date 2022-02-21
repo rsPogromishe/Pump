@@ -49,8 +49,7 @@ class UserInformationView: UIView {
         registrationLabel.text = data.userInfo.registration
         dateOfRegistrationLabel.text = data.userInfo.userDateRegistration
     }
-    
-    //#warning("(НЕ ИСПРАВЛЕНО)Вью должна прокидывать action во вью контроллер. Опиши Delegate, с помощью которого контроллер подпишется на ивент о logout/TODO: в итоге логаут всё так же во вьюхе остался и нтгде не вызывается")
+
     @IBAction func logoutButtonTapped(_ sender: Any) {
         delegate?.logout(sender: sender)
     }
